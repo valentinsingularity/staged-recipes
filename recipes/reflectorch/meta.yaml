@@ -1,0 +1,53 @@
+{% set name = "reflectorch" %}
+{% set version = "1.0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/reflectorch-{{ version }}.tar.gz
+  sha256: edafb4a7ec635a3487b836d651d378ec76b24315c3a12537f094243ee0256b20
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  host:
+    - python >=3.7
+    - setuptools >=61
+    - setuptools-scm
+    - pip
+  run:
+    - python >=3.7
+    - numpy >=1.18.1,<2.0
+    - pytorch >=1.8.1
+    - scipy
+    - tqdm
+    - pyyaml
+    - click
+    - matplotlib-base
+    - ipywidgets
+    - torchinfo
+    - huggingface_hub
+
+test:
+  imports:
+    - reflectorch
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/reflectorch/
+  summary: A Pytorch-based package for the analysis of reflectometry data
+  dev_url: https://github.com/schreiber-lab/reflectorch/
+  license: MIT
+  license_file: LICENSE.txt
+
+extra:
+  recipe-maintainers:
+    - valentinsingularity
