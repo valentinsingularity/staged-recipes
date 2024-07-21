@@ -1,5 +1,5 @@
 {% set name = "reflectorch" %}
-{% set version = "1.0.1" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/reflectorch-{{ version }}.tar.gz
-  sha256: edafb4a7ec635a3487b836d651d378ec76b24315c3a12537f094243ee0256b20
+  sha256: 23f32bbf339e9099d39d6d43506636311420cb70ff70210e3f3055faaf1ab195
 
 build:
   noarch: python
@@ -30,7 +30,6 @@ requirements:
     - click
     - matplotlib-base
     - ipywidgets
-    - torchinfo
     - huggingface_hub
 
 test:
